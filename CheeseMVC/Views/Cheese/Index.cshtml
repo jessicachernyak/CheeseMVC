@@ -11,18 +11,16 @@
     <p>There is no cheese!</p>
 }
     <form method="post" action="/Cheese/RemoveCheese">
-        @foreach (KeyValuePair<string, string> cheese in ViewBag.cheeses)
+        @foreach (Cheese cheese in ViewBag.cheeses)
     {
         <div>
-            <input type="checkbox" name="rmvcheese" value="@cheese.Key">
-            <label for="rmvcheese"> @cheese.Key: @cheese.Value</label>
+            <input type="checkbox" name="rmvcheese" value="@cheese.name">
+            <label for="rmvcheese"> @cheese.name: @cheese.description</label>
         </div>
 
-}
+    }
         @if (ViewBag.cheeses.Count > 0)
     {
         <input type="submit" value="Remove Cheese" />
     }
-
-}
     </form>
