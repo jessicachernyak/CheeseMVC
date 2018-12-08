@@ -4,23 +4,33 @@
 
 <h1>Cheeses</h1>
 
-<p><a asp-controller="Cheese" asp-action="Add">Add Cheese</a></p>
-
 @if (ViewBag.cheeses.Count == 0)
 {
     <p>There is no cheese!</p>
 }
-    <form method="post" action="/Cheese/RemoveCheese">
-        @foreach (Cheese cheese in ViewBag.cheeses)
-    {
-        <div>
-            <input type="checkbox" name="rmvcheese" value="@cheese.name">
-            <label for="rmvcheese"> @cheese.name: @cheese.description</label>
-        </div>
+<p><a asp-controller="Cheese" asp-action="Add">Add Cheese</a></p>
 
-    }
-        @if (ViewBag.cheeses.Count > 0)
+@if (ViewBag.cheeses.Count > 0)
+{
+<form method="post" action="/Cheese/Remove">
+    @foreach (var cheese in ViewBag.cheeses)
     {
-        <input type="submit" value="Remove Cheese" />
+        <p>
+            <input type="checkbox" name="cheeseIds" id="@cheese.CheeseId" value="@cheese.CheeseId">
+            &nbsp;
+            <b>@cheese.Name:</b>
+            <i>@cheese.Description</i>
+            &nbsp;
+            <a asp-controller="Cheese" asp-action="Edit" asp-route-cheeseId="@cheese.CheeseId">Edit</a>
+        </p>
     }
-    </form>
+        <p>
+            <input type="submit" value="Remove" />
+        </p>
+</form>
+}
+
+@* @if (ViewBag.cheeses.Count > 0)
+{
+    <p><a asp-controller="Cheese" asp-action="Remove">Remove Cheese</a></p>
+} *@

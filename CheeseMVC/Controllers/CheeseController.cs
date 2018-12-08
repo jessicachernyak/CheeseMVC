@@ -11,15 +11,10 @@ namespace CheeseMVC.Controllers
 {
     public class CheeseController : Controller
     {
-
-        // static private List<string> Cheeses = new List<string>();
-        // static private Dictionary<string, string> Cheeses = new Dictionary<string, string>();
-        static private List<Cheese> cheeses = new List<Cheese>();
-
         // GET: /<controller>/
         public IActionResult Index()
         {
-            ViewBag.cheeses = cheeses;
+            ViewBag.cheeses = CheeseData.GetAll();
 
             return View();
         }
@@ -32,20 +27,58 @@ namespace CheeseMVC.Controllers
 
         [HttpPost]
         [Route("/Cheese/Add")]
-        public IActionResult NewCheese(string name, string description)
+        public IActionResult NewCheese(Cheese newCheese)
         {
-            Cheese cheese = new Cheese(name, description);
-            cheeses.Add(cheese);
+            CheeseData.Add(newCheese);
 
             return Redirect("/Cheese");
         }
 
-        [HttpPost]
-        public IActionResult RemoveCheese(List<string> rmvcheese)
+        public IActionResult RemoveCheese()
         {
-            cheeses.RemoveAll(cheese => rmvcheese.Contains(cheese.name));
+            ViewBag.title = "Remove Cheeses";
+            ViewBag.cheeses = CheeseData.GetAll();
+            return View();
+        }
 
+        [HttpPost]
+        [Route("/Cheese/Remove")]
+        public IActionResult RemoveCheese(int[] cheeseIds)
+        {
+            foreach (int cheeseId in cheeseIds)
+            {
+                CheeseData.Remove(cheeseId);
+            }
+
+            // ViewBag.Cheeses = cheeses;
             return Redirect("/Cheese");
+        }
+
+        public IActionResult Edit(int CheeseId)
+        {
+            ViewBag.title = "Edit Cheeses";
+            ViewBag.cheese = CheeseData.GetById(CheeseId);
+            return View();
+        }
+
+        [HttpPost]
+        [Route("/Cheese/Edit")]
+        public IActionResult Edit(int cheeseId, string name, string description)
+        {
+            try
+            {
+                Cheese cheeseToEdit = CheeseData.GetById(cheeseId);
+                cheeseToEdit.Name = name;
+                cheeseToEdit.Description = description;
+                return Redirect("/Cheese");
+            }
+
+            catch (Exception e)
+            {
+                return Redirect("/Cheese");
+            }
+
+
         }
     }
 }

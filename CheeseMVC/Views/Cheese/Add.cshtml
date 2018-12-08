@@ -3,9 +3,10 @@
 }
 <h1>Add Cheese</h1>
 <form method="post">
-    <input name="name" type="text" />
+    <label for="name">Name</label>
+    <p><input name="name" id="name" type="text" /></p>
+    <label for="description">Description</label>
+    <p><textarea name="description" id="description"></textarea></p>
     <br />
-    <textarea name="description"></textarea>
-    <br />
-    <input type="submit" value="Add Cheese" />
+    <p><input type="submit" value="Add" /></p>
 </form>
