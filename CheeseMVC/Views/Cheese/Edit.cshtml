@@ -1,10 +1,13 @@
-﻿<h1>Edit Cheese @ViewBag.cheese.Name (@ViewBag.cheese.CheeseId)</h1>
+﻿@model CheeseMVC.ViewModels.AddEditCheeseViewModel
+
+<h1>Edit Cheese @ViewBag.cheese.Name (@ViewBag.cheese.ID)</h1>
+@*<h1>Edit Cheese @Model.Name (@Model.cheeseId)</h1>*@
 <form method="post">
-        <label for="name">Name</label>
-        <p><input name="name" id="name" type="text" value="@ViewBag.cheese.Name"/></p>
-        <label for="description">Description</label>
-        <p><textarea name="description" id="description">@ViewBag.cheese.Description</textarea></p>
-        <input type="hidden" value="@ViewBag.cheese.CheeseId" name="id" />
-        <br />
-        <p><input type="submit" value="Edit" /></p>
+    <label for="name">Name</label>
+    <p><input name="name" id="name" type="text" value="@ViewBag.cheese.Name" /></p>
+    <label for="description">Description</label>
+    <p><textarea name="description" id="description">@ViewBag.cheese.Description</textarea></p>
+    <input type="hidden" value="@ViewBag.cheese.ID" name="id" />
+    <br />
+    <p><input type="submit" value="Edit" /></p>
 </form>

@@ -1,18 +1,30 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.6" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Remove="Views\Index.cshtml" />
     <Content Remove="Views\Add.cshtml" />
+    <Content Remove="Data\CheeseDBContext.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Cheese\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Data\" />
+  </ItemGroup>
+  <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.0" />
+      <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Models\CheeseData.cs" />
+    <Compile Remove="Migrations\20181218152458_InitialMigration.Designer.cs" />
   </ItemGroup>
 </Project>
