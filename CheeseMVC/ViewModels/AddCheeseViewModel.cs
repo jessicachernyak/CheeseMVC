@@ -17,40 +17,40 @@ namespace CheeseMVC.ViewModels
         [Required(ErrorMessage = "You must provide a description.")]
         public string Description { get; set; }
 
-        public CheeseType Type { get; set; }
+        public CheeseCategory Category { get; set; }
 
-        public List<SelectListItem> CheeseTypes { get; set; }
+        public List<SelectListItem> CheeseCategories { get; set; }
 
-        [Range(1,5)]
+        [Range(1, 5)]
         // How to display error message without making it required?
         public int rating { get; set; }
 
-        public AddCheeseViewModel()
+        [Required]
+        [Display(Name = "Category")]
+        public int CategoryID { get; set; }
+
+        public List<SelectListItem> Categories { get; set; }
+
+        public AddCheeseViewModel(IEnumerable<CheeseCategory> categories)
         {
-            CheeseTypes = new List<SelectListItem>();
-
-            CheeseTypes.Add(new SelectListItem
+            Categories = new List<SelectListItem>();
+            foreach(CheeseCategory category in categories)
             {
-                Value = ((int) CheeseType.Yellow).ToString(),
-                Text = CheeseType.Yellow.ToString()
-            });
+                SelectListItem cheeseCategory = new SelectListItem
+                {
+                    Value = ((int)category.ID).ToString(),
+                    Text = category.Name
+                };
 
-            CheeseTypes.Add(new SelectListItem
-            {
-                Value = ((int)CheeseType.White).ToString(),
-                Text = CheeseType.White.ToString()
-            });
+                Categories.Add(cheeseCategory);
 
-            CheeseTypes.Add(new SelectListItem
-            {
-                Value = ((int)CheeseType.Blue).ToString(),
-                Text = CheeseType.Blue.ToString()
-            });
+            }
+
         }
 
-        //public CreateCheese()
-        //{
-        //    return ;
-        //}
+        public AddCheeseViewModel()
+        {
+
+        }
     }
 }

@@ -3,10 +3,10 @@
 <h1>Add Cheese</h1>
 <form asp-controller="Cheese" asp-action="Add" method="post">
     <div>
-        <label asp-for="Type"></label>
-        <select asp-for="Type" asp-items="Model.CheeseTypes"></select>
-    </div>
-    <div>
+        <div>
+            <label asp-for="CategoryID"></label>
+            <select asp-for="CategoryID" asp-items="Model.Categories"></select>
+        </div>
         <label asp-for="Name"></label>
         <span asp-validation-for="Name" style="color: red"></span>
         <p><input asp-for="Name" /></p>
