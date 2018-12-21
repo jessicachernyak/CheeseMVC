@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CheeseMVC.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -10,16 +11,17 @@ namespace CheeseMVC.ViewModels
         public int MenuID { get; set; }
 
         public Menu Menu { get; set; }
-        // public List<SelectListItem> Cheeses { get; set; }
-        public List<SelectListItem> Cheeses = new List<SelectListItem>();
+        public List<SelectListItem> Cheeses { get; set; }
 
         public AddMenuItemViewModel()
         {
 
         }
 
-        public AddMenuItemViewModel(Menu Menu, IEnumerable<Cheese> cheeses)
+        public AddMenuItemViewModel(Menu menu, IEnumerable<Cheese> cheeses)
         {
+            Cheeses = new List<SelectListItem>();
+
             foreach (var cheese in cheeses)
             {
                 Cheeses.Add(new SelectListItem
@@ -28,6 +30,7 @@ namespace CheeseMVC.ViewModels
                     Text = cheese.Name
                 });
             }
+            Menu = menu;
         }
     }
 }

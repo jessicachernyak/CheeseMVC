@@ -7,7 +7,7 @@ namespace CheeseMVC.Models
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public int rating { get; set; }
+        public int Rating { get; set; }
 
         public int CategoryID { get; set; }
         public CheeseCategory Category { get; set; }

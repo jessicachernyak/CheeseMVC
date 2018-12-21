@@ -22,7 +22,6 @@
     <Folder Include="Views\Cheese\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Data\" />
-    <Folder Include="Migrations\" />
     <Folder Include="Views\Category\" />
     <Folder Include="Views\Menu\" />
   </ItemGroup>
@@ -41,5 +40,6 @@
     <Compile Remove="Migrations\20181219164412_InitialMigration.cs" />
     <Compile Remove="Migrations\20181219164412_InitialMigration.Designer.cs" />
     <Compile Remove="Migrations\CheeseDbContextModelSnapshot.cs" />
+    <Compile Remove="Migrations\20181219162331_AddCategoryID.cs" />
   </ItemGroup>
 </Project>

@@ -23,7 +23,7 @@ namespace CheeseMVC.ViewModels
 
         [Range(1, 5)]
         // How to display error message without making it required?
-        public int rating { get; set; }
+        public int Rating { get; set; }
 
         [Required]
         [Display(Name = "Category")]

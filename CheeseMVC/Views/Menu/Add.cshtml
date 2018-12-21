@@ -4,8 +4,11 @@
     ViewBag.Title = "New Menu";
 }
 
+<h1>New Menu</h1>
+
 <form asp-controller="Menu" asp-action="Add" method="post">
     <div>
+        <br />
         <label asp-for="Name"></label>
         <span asp-validation-for="Name" style="color: red"></span>
         <p><input asp-for="Name" /></p>

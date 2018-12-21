@@ -13,15 +13,6 @@ namespace CheeseMVC.Models
         public int ID { get; set; }
         public string Name { get; set; }
 
-        public IList<CheeseMenu> CheeseMenus { get; set; }
+        public IList<CheeseMenu> CheeseMenus { get; set; } = new List<CheeseMenu>();
     }
-
-    // Extension method used to add the middleware to the HTTP request pipeline.
-    //public static class MenuExtensions
-    //{
-    //    public static IApplicationBuilder UseMiddlewareClassTemplate(this IApplicationBuilder builder)
-    //    {
-    //        return builder.UseMiddleware<Menu>();
-    //    }
-    //}
 }
