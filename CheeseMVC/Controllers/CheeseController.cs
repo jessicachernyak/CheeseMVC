@@ -49,7 +49,7 @@ namespace CheeseMVC.Controllers
                     Name = addCheeseViewModel.Name,
                     Description = addCheeseViewModel.Description,
                     Category = newCheeseCategory,
-                    rating = addCheeseViewModel.rating
+                    Rating = addCheeseViewModel.Rating
                 };
 
                 context.Cheeses.Add(newCheese);

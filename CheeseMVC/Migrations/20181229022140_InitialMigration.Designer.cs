@@ -9,8 +9,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CheeseMVC.Migrations
 {
     [DbContext(typeof(CheeseDbContext))]
-    [Migration("20181220212541_Migrations")]
-    partial class Migrations
+    [Migration("20181229022140_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,7 +31,7 @@ namespace CheeseMVC.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("rating");
+                    b.Property<int>("Rating");
 
                     b.HasKey("ID");
 

@@ -29,7 +29,7 @@ namespace CheeseMVC.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("rating");
+                    b.Property<int>("Rating");
 
                     b.HasKey("ID");
 
